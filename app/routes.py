@@ -18,8 +18,8 @@ Planet(7, "Uranus", "empty", 27),
 Planet(1, "Neptune", "Can't see with naked eye", 14) 
 ]     
 
-planets_bp = Blueprint("planets_bp", __name__, url_prefix="/Planets")
-@planets_bp.route("/planets", methods=["GET"])
+planets_bp = Blueprint("planets_bp", __name__, url_prefix="/planets")
+@planets_bp.route("", methods=["GET"])
 
 def get_all_planets():
     planets_response = []
