@@ -19,8 +19,8 @@ Planet(1, "Neptune", "Can't see with naked eye", 14)
 ]     
 
 planets_bp = Blueprint("planets_bp", __name__, url_prefix="/planets")
-@planets_bp.route("", methods=["GET"])
 
+@planets_bp.route("", methods=["GET"])
 def get_all_planets():
     planets_response = []
     
@@ -31,3 +31,10 @@ def get_all_planets():
         "moon_count": planet.moon_count})
 
     return jsonify(planets_response)
+
+@planets_bp.route("/<planet_id>", methods=["GET"])
+def get_one_planet(planet_id):
+    planet_id = int(planet_id)
+    for planet in planets:
+        if planet_id == planet.id:
+            return vars(planet)
